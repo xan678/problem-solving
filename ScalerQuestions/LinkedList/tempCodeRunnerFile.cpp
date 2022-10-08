@@ -1,0 +1,2 @@
+
+    while (curr->next != NULL)  

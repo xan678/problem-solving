@@ -48,21 +48,51 @@ Node* mergeTwoLists(Node* A, Node * B){
     return result;
 }
 
+Node* middleElement(Node* A){
+    if(A->next->next == NULL){
+        return A;
+    }
+    Node* slow = A;
+    Node* fast = A;
+
+    while(fast != NULL && fast->next!= NULL){
+        slow = slow->next;
+
+        if(fast->next != NULL){
+            fast = fast->next->next;
+        }
+    }
+
+    return slow;
+}
+
+Node* sortList(Node* A){
+    
+    if(A == NULL || A->next == NULL){
+        return A;
+    }
+
+    Node* m = middleElement(A);
+    Node * h2 = m->next;
+    m->next = NULL;
+    A= sortList(A);
+    h2 = sortList(h2);
+
+    return mergeTwoLists(A,h2);
+}
+
 int main()
 {
-    vector<int> first = {8};
-    vector<int> second = {6};
-
+    vector<int> array = {1};
     List one;
-    List two;
+    Node* A = one.insertArray(array);
+    one.printList();
+    one.head = sortList(A);
 
-    Node* A = one.insertArray(first);
-    Node* B = two.insertArray(second);
 
-    Node* C = NULL;
-    List res;
-    Node* result = mergeTwoLists(A,B);
-    res.head = result;
-    res.printList();
+    one.printList();
+    
+    // Node* res = middleElement(A);
+    // cout<<res->data;
     return 0;
 }

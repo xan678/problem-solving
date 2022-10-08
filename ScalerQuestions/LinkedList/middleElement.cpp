@@ -24,7 +24,7 @@ int middleElement(Node* A){
 
 int main()
 {
-    vector<int> array = {1, 6, 7, 8, 10, 12, 2, 11};
+    vector<int> array = {1, 6};
     List one;
     Node* A = one.insertArray(array);
 
