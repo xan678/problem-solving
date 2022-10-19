@@ -1,3 +1,6 @@
+#include<iostream>
+
+using namespace std;
 template <typename T>
 class Stack;
 
@@ -10,7 +13,7 @@ public:
 
     Node(T data)
     {
-        data = d;
+        this->data = data;
     }
 };
 
@@ -18,10 +21,8 @@ template <typename T>
 class Stack
 {
 
-private:
-    Node<T> *head;
-
 public:
+    Node<T> *head;
     Stack()
     {
         head = NULL;
@@ -35,7 +36,7 @@ public:
     }
 
     bool empty(){
-        return head == NULL :
+        return head == NULL;
     }
 
     T top()
@@ -52,5 +53,15 @@ public:
             temp->next = NULL;
             delete temp;
         }
+    }
+
+    void display(){
+        Node<T>* temp = head;
+        while (temp != NULL)
+        {
+            cout<<temp->data<<" ";
+            temp = temp->next;
+        }
+        cout<<endl;
     }
 };
