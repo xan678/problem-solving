@@ -9,6 +9,20 @@ using namespace std;
 
 vector<int> flag(200005,-1);
 
+int solve3(TreeNode *A, int mx){
+    if(A== NULL) return 0;
+
+    int left = solve3(A->left, max(A->val, mx));
+    int right = solve3(A->right, max(A->val, mx));
+    
+    int count = 0;
+    if(A->val > mx){
+        count = 1;
+    }
+
+    return left + right + count;
+}
+
 int solve2(TreeNode* A, int index){
 
     if(A == NULL) return 0;
@@ -49,7 +63,7 @@ int solve(TreeNode* A){
     // }
     // return left+right;
     flag[0] = INT_MIN;
-    return solve2(A,1);
+    return solve3(A,-1);
 }
 
 int main()
